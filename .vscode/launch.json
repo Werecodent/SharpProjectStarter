@@ -2,12 +2,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            // https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
-            "name": ".NET Core Launch (console)",
+            "name": "Launch Console",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/artifacts/bin/Terminal/Debug/net6.0/Terminal.dll",
+            "program": "${workspaceFolder}/artifacts/bin/Terminal/Debug/net10.0/Terminal.dll",
             "args": [],
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
