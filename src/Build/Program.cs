@@ -1,95 +1,146 @@
-using System.IO;
-using System.Threading.Tasks;
 using static Bullseye.Targets;
 using static SimpleExec.Command;
 
-namespace UltimateProjectStarter.Build
+namespace Build;
+
+/// <summary>Manages build behavior for the solution.</summary>
+/// <remarks>Do not add this project to the solution file.</remarks>
+internal static class Program
 {
-    /// <summary>Manages build behavior for the solution.</summary>
-    public static class Program
+    /// <summary>Base directory for all output.</summary>
+    private static readonly string _ArtifactDir = Path.Combine(
+        Directory.GetCurrentDirectory(),
+        "artifacts"
+    );
+
+    /// <summary>Console application entry point.</summary>
+    /// <param name="args">Command-line arguments.</param>
+    public static Task Main(string[] args)
     {
-        /// <summary>Base directory for all output.</summary>
-        private static readonly string _ArtifactDir = Path.Combine(Directory.GetCurrentDirectory(), "artifacts");
+        string[] configurations = ["Debug", "Release"];
+        Target("default", dependsOn: ["test"]);
+        Target("restore", RestoreAsync);
+        Target("compile", dependsOn: ["restore"], forEach: configurations, CompileAsync);
+        Target("test", dependsOn: ["compile"], forEach: configurations, TestAsync);
+        Target("coverage", dependsOn: ["compile"], CoverageAsync);
+        Target("pack", dependsOn: ["compile"], PackAsync);
+        Target("debugCrash", dependsOn: ["compile"], DebugCrashAsync);
+        return RunTargetsAndExitAsync(args);
+    }
 
-        /// <summary>Console application entry point.</summary>
-        public static async Task Main(string[] args)
+    /// <summary>Downloads all packages for the solution.</summary>
+    private static async Task RestoreAsync()
+    {
+        await RunAsync("dotnet", "tool update -g csharpier").ConfigureAwait(false);
+        await RunAsync("dotnet", "restore").ConfigureAwait(false);
+    }
+
+    /// <summary>Builds the solution.</summary>
+    /// <param name="configuration">Build configuration to use.</param>
+    private static Task CompileAsync(string configuration)
+    {
+        return RunAsync("dotnet", $"build --no-restore --configuration {configuration}");
+    }
+
+    /// <summary>Tests the solution.</summary>
+    /// <param name="configuration">Build configuration to use.</param>
+    private static Task TestAsync(string configuration)
+    {
+        return RunAsync("dotnet", $"test --no-restore --no-build --configuration {configuration}");
+    }
+
+    /// <summary>Tests the solution with file logging.</summary>
+    /// <remarks>For debugging test harness crashes.</remarks>
+    private static Task DebugCrashAsync()
+    {
+        string logDir = Path.Combine(_ArtifactDir, "logs");
+        EnsureEmpty(logDir);
+
+        string logFile = Path.Combine(logDir, "test.txt");
+        string testArgs = $"test --no-restore --no-build --diag:{logFile} ";
+
+        return RunAsync("dotnet", testArgs + "--configuration Debug");
+    }
+
+    /// <summary>Tests and analyzes test code coverage.</summary>
+    private static async Task CoverageAsync()
+    {
+        const string prefix = "coverage";
+        const string postfix = ".cobertura.xml";
+
+        string toolsDir = Path.Combine(_ArtifactDir, "tools");
+        string coverageDir = Path.Combine(_ArtifactDir, "coverage");
+        string testDir = Path.Combine(coverageDir, "testResults");
+        string reportDir = Path.Combine(coverageDir, "report");
+
+        EnsureEmpty(coverageDir);
+
+        await RunAsync(
+                "dotnet",
+                string.Join(
+                    ' ',
+                    "test",
+                    "--no-build",
+                    "--no-restore",
+                    "--configuration Debug",
+                    "--collect:\"XPlat Code Coverage\"",
+                    $"--results-directory \"{testDir}\""
+                )
+            )
+            .ConfigureAwait(false);
+
+        int count = 0;
+        foreach (
+            string result in Directory.GetFiles(
+                testDir,
+                prefix + postfix,
+                SearchOption.AllDirectories
+            )
+        )
         {
-            Target("default", DependsOn("coverage"));
-            Target("restore", Restore);
-            Target("compile", DependsOn("restore"), Compile);
-            Target("runConsole", DependsOn("compile"), RunConsole);
-            Target("test", DependsOn("compile"), Test);
-            Target("coverage", DependsOn("compile"), Coverage);
-            await RunTargetsAndExitAsync(args);
+            File.Copy(result, Path.Combine(coverageDir, $"{prefix}{count++}{postfix}"));
         }
 
-        /// <summary>Downloads all packages for the solution.</summary>
-        private static Task Restore()
-        {
-            return RunAsync("dotnet", "restore");
-        }
+        await RunAsync(
+                "dotnet",
+                $"tool update dotnet-reportgenerator-globaltool --tool-path {toolsDir}"
+            )
+            .ConfigureAwait(false);
+        await RunAsync(
+                $"{toolsDir}/reportgenerator",
+                $"-reports:{coverageDir}/*.xml -targetdir:{reportDir}"
+            )
+            .ConfigureAwait(false);
+    }
 
-        /// <summary>Builds the solution.</summary>
-        private static async Task Compile()
-        {
-            await RunAsync($"dotnet", $"build --no-restore --configuration Debug");
-            await RunAsync($"dotnet", $"build --no-restore --configuration Release");
-        }
+    /// <summary>Packs the solution for release.</summary>
+    private static Task PackAsync()
+    {
+        string releaseDir = Path.Combine(_ArtifactDir, "releases");
+        EnsureEmpty(releaseDir);
 
-        /// <summary>Runs the console version.</summary>
-        private static async Task RunConsole()
-        {
-            await RunAsync($"dotnet", $"run src/Terminal --no-restore --no-build --configuration Release");
-        }
-
-        /// <summary>Tests the solution.</summary>
-        private static async Task Test()
-        {
-            string testArgs = "test --no-restore --no-build ";
-
-            await RunAsync("dotnet", testArgs + "--configuration Debug");
-            await RunAsync("dotnet", testArgs + "--configuration Release");
-        }
-
-        /// <summary>Tests and analyzes test code coverage.</summary>
-        private static async Task Coverage()
-        {
-            string prefix = "coverage";
-            string postfix = ".cobertura.xml";
-
-            string coverageDir = Path.Combine(_ArtifactDir, "coverage");
-            string testDir = Path.Combine(coverageDir, "testResults");
-            string reportDir = Path.Combine(coverageDir, "report");
-
-            EnsureEmpty(coverageDir);
-
-            await RunAsync("dotnet", string.Join(' ',
-                "test",
+        return RunAsync(
+            "dotnet",
+            string.Join(
+                ' ',
+                "pack",
                 "--no-build",
                 "--no-restore",
-                "--configuration Debug",
-                "--collect:\"XPlat Code Coverage\"",
-                $"--results-directory \"{testDir}\""));
+                "--configuration Release",
+                $"--output \"{releaseDir}\""
+            )
+        );
+    }
 
-            int count = 0;
-            foreach (string result in Directory.GetFiles(testDir, $"{prefix}{postfix}", SearchOption.AllDirectories))
-            {
-                File.Copy(result, Path.Combine(coverageDir, $"{prefix}{count++}{postfix}"));
-            }
-
-            await RunAsync("dotnet", "tool update -g dotnet-reportgenerator-globaltool");
-            await RunAsync("reportgenerator", $"-reports:{coverageDir}/*.xml -targetdir:{reportDir}");
-        }
-
-        /// <summary>Deletes and creates a directory.</summary>
-        /// <param name="dir">Directory to empty.</param>
-        private static void EnsureEmpty(string dir)
+    /// <summary>Enforces that <paramref name="dir"/> exists and is empty.</summary>
+    /// <param name="dir">Directory to empty/create.</param>
+    /// <remarks>Any existing contents are deleted.</remarks>
+    private static void EnsureEmpty(string dir)
+    {
+        if (Directory.Exists(dir))
         {
-            if (Directory.Exists(dir))
-            {
-                Directory.Delete(dir, true);
-            }
-            _ = Directory.CreateDirectory(dir);
+            Directory.Delete(dir, true);
         }
+        _ = Directory.CreateDirectory(dir);
     }
 }
