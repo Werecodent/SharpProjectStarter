@@ -4,11 +4,12 @@ Thank you for your interest in contributing.
 
 Please first discuss the change you wish to make via issue/request, email, or any other method with the owners of this repository before making changes. Failure to do so will likely lead to a declined pull request regardless of quality.
 
-Make sure to refer to and follow the [code of conduct](CODE_OF_CONDUCT.md).
+Make sure to refer to and follow the [code of conduct](CODE_OF_CONDUCT.md). For environment setup, refer to the [support](SUPPORT.md) page.
 
 ## Quality Requirements
 
-* Minimal external dependencies.
+* No AI-generated LLM code contributions.
+* Digitally signed (see DCO below).
 * 100% test coverage.
 * Proper comments.
 * Updated documentation.
@@ -17,28 +18,7 @@ Make sure to refer to and follow the [code of conduct](CODE_OF_CONDUCT.md).
 
 Pull requests will be reviewed thoroughly to maintain project quality.
 
-## Windows Environment Recommended Setup
-
-1) Install [VS Community](https://visualstudio.microsoft.com/vs/community/).
-2) Clone the repository locally.
-3) To see build options, run from cmd prompt: "./build/run.cmd --help"
-4) Verify project state by running from cmd prompt: "./build/run.cmd test"
-
-## Linux Environment Recommended Setup
-
-1) Install packages for:
-    A) [.NET frameworks](https://dotnet.microsoft.com/download/)
-    B) [Mono](https://www.mono-project.com/download/stable/#download-lin/)
-    C) [VS Code](https://code.visualstudio.com/download/)
-2) Install VS Code extensions:
-    A) C#
-    B) EditorConfig for VS Code
-    C) Powershell
-    D) Code Spell Checker
-3) Clone the repository locally.
-4) Run from terminal: "chmod +x ./build/run.sh"
-5) To see build options, run from terminal: "./build/run.sh --help"
-6) Verify project state by running from terminal: "./build/run.sh test"
+Note the ban on LLM-generated code. Developers do not have the right to submit LLM-generated code because that code can be incompatibly copyrighted or licensed elsewhere. Review the Developer Certificate of Origin adherence requirements below.
 
 ## Developer Certificate of Origin (DCO)
 

@@ -1,9 +1,5 @@
 # Security Policy
 
-## Overview
-
-Security threats are to receive priority attention and released asap. The source code itself should contain no passwords or user information.
-
 ## Supported Versions
 
 | Version | Supported          |
@@ -12,4 +8,19 @@ Security threats are to receive priority attention and released asap. The source
 
 ## Reporting a Vulnerability
 
-Create and fill out a private security advisory here, or email the repository owner.
+Pick one of the following options you find ideal for the situation:
+
+* Use GitHub private vulnerability reporting for this repository.
+
+Please do not use public GitHub issues, discussions, or pull requests to report security vulnerabilities.
+
+When reporting a vulnerability, please include:
+
+- The project and version
+- A description of the issue
+- The potential impact
+- Steps to reproduce
+- Any relevant logs or screenshots
+- Any suggestions
+
+If a report is validated, we may publish a GitHub Security Advisory once details are ready to share publicly.

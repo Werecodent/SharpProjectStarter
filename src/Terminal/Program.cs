@@ -1,28 +1,26 @@
-﻿using System;
-using CodeTemplate.Library;
+﻿using Werecodent.UltimateProjectStarter.Library;
 
-namespace CodeTemplate.Terminal
+namespace Werecodent.UltimateProjectStarter.Terminal;
+
+/// <summary>Handles running chess on the console.</summary>
+internal static class Program
 {
-    /// <summary>Handles running chess on the console.</summary>
-    public static class Program
+    /// <summary>Application entry point.</summary>
+    public static void Main()
     {
-        /// <summary>Application entry point.</summary>
-        public static void Main()
+        while (true)
         {
-            while (true)
+            string input = Console.ReadLine() ?? "quit";
+            if (TextChecker.IsOnlyNumbersAndLetters(input))
             {
-                string input = Console.ReadLine() ?? "quit";
-                if (TextChecker.IsOnlyNumbersAndLetters(input))
+                switch (input)
                 {
-                    switch (input)
-                    {
-                        default:
-                            Console.WriteLine(input);
-                            break;
-                        case "quit":
-                        case "q":
-                            return;
-                    }
+                    default:
+                        Console.WriteLine(input);
+                        break;
+                    case "quit":
+                    case "q":
+                        return;
                 }
             }
         }

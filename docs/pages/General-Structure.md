@@ -1,5 +1,7 @@
 # Structure
 
+Here's an example page.
+
 This project template aims to be as clear as possible with minimal root noise.
 
 ## ./artifacts
