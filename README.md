@@ -1,6 +1,7 @@
-# Code Template
+# Ultimate Project Starter
 
-[![Build](https://github.com/Werecodent/UltimateProjectStarter/workflows/Integration/badge.svg)](../../actions?query=workflow%3AIntegration) [![CodeCov Coverage](https://codecov.io/gh/Werecodent/UltimateProjectStarter/branch/main/graph/badge.svg)](https://codecov.io/gh/Werecodent/UltimateProjectStarter/branch/main)
+[![Build](https://github.com/Werecodent/UltimateProjectStarter/actions/workflows/integration.yml/badge.svg?branch=main)](https://github.com/Werecodent/UltimateProjectStarter/actions/workflows/integration.yml)
+[![CodeCov Coverage](https://codecov.io/gh/Werecodent/UltimateProjectStarter/branch/main/graph/badge.svg)](https://codecov.io/gh/Werecodent/UltimateProjectStarter/branch/main)
 
 (This project is under construction at the moment; be cautious of incomplete instructions.)
 
