@@ -18,7 +18,8 @@ Customize the project for your own use by following these steps:
 
 1) Replace all instance of "Werecodent" with your organization's name (or empty).
 2) Replace all instances of "UltimateProjectStarter" with your project's name.
-3) Tweak existing code as needed and begin coding.
+3) Install "CodeCov" as a GitHub app to the project/organization and set it up, or remove all references.
+4) Tweak existing code as needed and begin coding.
 
 ## Documentation
 

@@ -1,0 +1,43 @@
+name: Integration
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  testing:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macOS-latest, windows-latest]
+      fail-fast: false
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    steps:
+    - uses: actions/checkout@v6
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v5
+      with:
+        dotnet-version: 10.0.x
+    - name: Build & Test
+      run: ./build/run.sh test
+      shell: bash
+    
+  coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+    - uses: actions/checkout@v6
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v5
+      with:
+        dotnet-version: 10.0.x
+    - name: Build & Check Test Coverage
+      shell: bash
+      run: ./build/run.cmd coverage
+    - name: Upload Coverage
+      uses: codecov/codecov-action@v6
+      with:
+        directory: ./artifacts/coverage
+        token: ${{ Secrets.CODECOV_TOKEN }}
