@@ -1,0 +1,66 @@
+{
+    "$schema": "https://raw.githubusercontent.com/dotnet/docfx/main/schemas/docfx.schema.json",
+    "metadata": [
+        {
+            "src": [
+                {
+                    "src": "../src",
+                    "files": [
+                        "**/*.csproj"
+                    ],
+                    "exclude": [
+                        "Build/*.csproj"
+                    ]
+                }
+            ],
+            "output": "../artifacts/api",
+            "noRestore": true,
+            "namespaceLayout": "flattened",
+            "memberLayout": "separatePages"
+        }
+    ],
+    "build": {
+        "content": [
+            {
+                "files": [
+                    "**/*.{md,yml}"
+                ]
+            },
+            {
+                "src": "../artifacts",
+                "files": [
+                    "api/**"
+                ]
+            }
+        ],
+        "resource": [
+            {
+                "files": [
+                    "images/**"
+                ]
+            }
+        ],
+        "output": "../artifacts/site",
+        "template": [
+            "default",
+            "modern",
+            "template"
+        ],
+        "globalMetadata": {
+            "_appName": "Sharp Project Starter",
+            "_appTitle": "Sharp Project Starter",
+            "_appLogoPath": "images/SharpProjectStarterLogo.svg",
+            "_appFaviconPath": "images/SharpProjectStarterLogo.svg",
+            "_enableSearch": true,
+            "_disableContribution": true,
+            "pdf": false
+        },
+        "sitemap": {
+            "baseUrl": "https://werecodent.github.io/SharpProjectStarter",
+            "changefreq": "monthly"
+        },
+        "xref": [
+            "https://learn.microsoft.com/en-us/dotnet/.xrefmap.json"
+        ]
+    }
+}
