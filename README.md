@@ -1,7 +1,6 @@
 # <img src="site/images/SharpProjectStarterLogo.svg" height=24px title="Logo" alt="" /> Sharp Project Starter
 
-[![Build](https://github.com/Werecodent/SharpProjectStarter/actions/workflows/integration.yml/badge.svg?branch=main)](https://github.com/Werecodent/SharpProjectStarter/actions/workflows/integration.yml)
-[![CodeCov Coverage](https://codecov.io/gh/Werecodent/SharpProjectStarter/branch/main/graph/badge.svg)](https://codecov.io/gh/Werecodent/SharpProjectStarter/branch/main)
+[![Build](https://github.com/Werecodent/SharpProjectStarter/actions/workflows/integration.yml/badge.svg?branch=main)](https://github.com/Werecodent/SharpProjectStarter/actions/workflows/integration.yml) [![CodeCov Coverage](https://codecov.io/gh/Werecodent/SharpProjectStarter/branch/main/graph/badge.svg)](https://codecov.io/gh/Werecodent/SharpProjectStarter/branch/main) [![GitHub Sponsors](https://img.shields.io/github/sponsors/Werecodent?logo=githubsponsors)](https://github.com/sponsors/Werecodent)
 
 (This project is under construction at the moment; be cautious of incomplete instructions.)
 
@@ -24,9 +23,9 @@ Customize the project for your own use by following these steps:
 
 ## Documentation
 
-The documentation site is located here: https://Werecodent.github.io/SharpProjectStarter/
+Visit the [documentation site](https://werecodent.github.io/SharpProjectStarter/) for more information and how to get started.
 
-The raw files can be viewed from the [docs](docs) folder or built into a local site using Jekyll.
+A local site can be built from the source code using the terminal command "./build/run.sh serveSite".
 
 ## Sponsors
 
