@@ -1,6 +1,6 @@
-﻿using Werecodent.UltimateProjectStarter.Library;
+﻿using Werecodent.SharpProjectStarter.Library;
 
-namespace Werecodent.UltimateProjectStarter.Terminal;
+namespace Werecodent.SharpProjectStarter.Terminal;
 
 /// <summary>Handles running chess on the console.</summary>
 internal static class Program

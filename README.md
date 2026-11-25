@@ -1,7 +1,6 @@
-# Ultimate Project Starter
+# <img src="site/images/SharpProjectStarterLogo.svg" height=24px title="Logo" alt="" /> Sharp Project Starter
 
-[![Build](https://github.com/Werecodent/UltimateProjectStarter/actions/workflows/integration.yml/badge.svg?branch=main)](https://github.com/Werecodent/UltimateProjectStarter/actions/workflows/integration.yml)
-[![CodeCov Coverage](https://codecov.io/gh/Werecodent/UltimateProjectStarter/branch/main/graph/badge.svg)](https://codecov.io/gh/Werecodent/UltimateProjectStarter/branch/main)
+[![Build](https://github.com/Werecodent/SharpProjectStarter/actions/workflows/integration.yml/badge.svg?branch=main)](https://github.com/Werecodent/SharpProjectStarter/actions/workflows/integration.yml) [![CodeCov Coverage](https://codecov.io/gh/Werecodent/SharpProjectStarter/branch/main/graph/badge.svg)](https://codecov.io/gh/Werecodent/SharpProjectStarter/branch/main) [![GitHub Sponsors](https://img.shields.io/github/sponsors/Werecodent?logo=githubsponsors)](https://github.com/sponsors/Werecodent)
 
 (This project is under construction at the moment; be cautious of incomplete instructions.)
 
@@ -11,22 +10,27 @@ Everything you need to get a quick start for a C# project on GitHub! Useful as a
 2) A variety of sample projects to fit whatever you want to do.
 3) Build workflows with test coverage collection.
 4) Clean project structure with all output directed to './artifacts'.
-5) Even the start of a [documentation site](https://Werecodent.github.io/UltimateProjectStarter/) using GitHub pages.
+5) Even the start of a [documentation site](https://Werecodent.github.io/SharpProjectStarter/) using GitHub pages.
 
 ## Instructions
 
 Customize the project for your own use by following these steps:
 
 1) Replace all instance of "Werecodent" with your organization's name (or empty).
-2) Replace all instances of "UltimateProjectStarter" with your project's name.
+2) Replace all instances of "SharpProjectStarter" & "Sharp Project Starter" with your project's name.
 3) Install "CodeCov" as a GitHub app to the project/organization and set it up, or remove all references.
 4) Tweak existing code as needed and begin coding.
 
 ## Documentation
 
-The documentation site is located here: https://Werecodent.github.io/UltimateProjectStarter/
+Visit the [documentation site](https://werecodent.github.io/SharpProjectStarter/) for more information and how to get started.
 
-The raw files can be viewed from the [docs](docs) folder or built into a local site using Jekyll.
+A local site can be built from the source code using the terminal command "./build/run.sh serveSite".
+
+## Sponsors
+
+<a href="https://github.com/Werecodent"><img src="https://github.com/Werecodent.png" width="40px" title="Werecodent" alt="Werecodent" /></a>
+<a href="https://github.com/Werebunny"><img src="https://github.com/Werebunny.png" width="40px" title="Werebunny" alt="Werebunny" /></a>
 
 ## Contributing
 
@@ -45,7 +49,7 @@ View the [license](LICENSE) file for more details.
 * [Coverlet](https://github.com/tonerdo/coverlet) + [ReportGenerator](https://danielpalme.github.io/ReportGenerator) + [CodeCov](https://codecov.io): For test coverage.
 * [Bullseye](https://github.com/adamralph/bullseye) + [SimpleExec](https://github.com/adamralph/simple-exec) + [MinVer](https://github.com/adamralph/minver): For project building.
 * [AsyncFixer](https://github.com/semihokur/AsyncFixer) + [MissingAwaitWarning](https://github.com/ykoksen/unused-task-warning) + [Meziantou.Analyzer](https://github.com/meziantou/Meziantou.Analyzer) + [Sonar](https://github.com/SonarSource/sonar-dotnet): For code analyzers.
+* [DocFX](https://github.com/dotnet/docfx): For building the documentation site.
 * [CSharpier](https://github.com/belav/csharpier): For formatting code.
 * [GitHub](https://github.com): For hosting code.
 * [Microsoft](https://visualstudio.microsoft.com/vs/features/net-development): For C# and editors.
-

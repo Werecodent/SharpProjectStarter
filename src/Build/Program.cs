@@ -13,6 +13,9 @@ internal static class Program
         "artifacts"
     );
 
+    /// <summary>Base directory for build tools.</summary>
+    private static readonly string _ToolsDir = Path.Combine(_ArtifactDir, "tools");
+
     /// <summary>Console application entry point.</summary>
     /// <param name="args">Command-line arguments.</param>
     public static Task Main(string[] args)
@@ -25,10 +28,13 @@ internal static class Program
         Target("coverage", dependsOn: ["compile"], CoverageAsync);
         Target("pack", dependsOn: ["compile"], PackAsync);
         Target("debugCrash", dependsOn: ["compile"], DebugCrashAsync);
+        Target("buildSite", dependsOn: ["restore"], BuildSiteAsync);
+        Target("serveSite", dependsOn: ["buildSite"], ServeSiteAsync);
         return RunTargetsAndExitAsync(args);
     }
 
     /// <summary>Downloads all packages for the solution.</summary>
+    /// <returns>A <see cref="Task"/> that represents the asynchronous operation.</returns>
     private static async Task RestoreAsync()
     {
         await RunAsync("dotnet", "tool update -g csharpier").ConfigureAwait(false);
@@ -37,6 +43,7 @@ internal static class Program
 
     /// <summary>Builds the solution.</summary>
     /// <param name="configuration">Build configuration to use.</param>
+    /// <returns>A <see cref="Task"/> that represents the asynchronous operation.</returns>
     private static Task CompileAsync(string configuration)
     {
         return RunAsync("dotnet", $"build --no-restore --configuration {configuration}");
@@ -44,6 +51,7 @@ internal static class Program
 
     /// <summary>Tests the solution.</summary>
     /// <param name="configuration">Build configuration to use.</param>
+    /// <returns>A <see cref="Task"/> that represents the asynchronous operation.</returns>
     private static Task TestAsync(string configuration)
     {
         return RunAsync("dotnet", $"test --no-restore --no-build --configuration {configuration}");
@@ -51,6 +59,7 @@ internal static class Program
 
     /// <summary>Tests the solution with file logging.</summary>
     /// <remarks>For debugging test harness crashes.</remarks>
+    /// <returns>A <see cref="Task"/> that represents the asynchronous operation.</returns>
     private static Task DebugCrashAsync()
     {
         string logDir = Path.Combine(_ArtifactDir, "logs");
@@ -62,13 +71,38 @@ internal static class Program
         return RunAsync("dotnet", testArgs + "--configuration Debug");
     }
 
+    /// <summary>Builds the documentation and site.</summary>
+    /// <returns>A <see cref="Task"/> that represents the asynchronous operation.</returns>
+    private static async Task BuildSiteAsync()
+    {
+        string siteDir = Path.Combine(_ArtifactDir, "site");
+        string apiDir = Path.Combine(_ArtifactDir, "api");
+        EnsureEmpty(siteDir);
+        EnsureEmpty(apiDir);
+
+        await RunAsync("dotnet", $"tool update docfx --tool-path {_ToolsDir}")
+            .ConfigureAwait(false);
+
+        await RunAsync($"{_ToolsDir}/docfx", "metadata site/docfx.json").ConfigureAwait(false);
+        await RunAsync($"{_ToolsDir}/docfx", "build site/docfx.json").ConfigureAwait(false);
+    }
+
+    /// <summary>Builds the documentation and site.</summary>
+    /// <returns>A <see cref="Task"/> that represents the asynchronous operation.</returns>
+    private static Task ServeSiteAsync()
+    {
+        string siteDir = Path.Combine(_ArtifactDir, "site");
+
+        return RunAsync($"{_ToolsDir}/docfx", $"serve {siteDir}");
+    }
+
     /// <summary>Tests and analyzes test code coverage.</summary>
+    /// <returns>A <see cref="Task"/> that represents the asynchronous operation.</returns>
     private static async Task CoverageAsync()
     {
         const string prefix = "coverage";
         const string postfix = ".cobertura.xml";
 
-        string toolsDir = Path.Combine(_ArtifactDir, "tools");
         string coverageDir = Path.Combine(_ArtifactDir, "coverage");
         string testDir = Path.Combine(coverageDir, "testResults");
         string reportDir = Path.Combine(coverageDir, "report");
@@ -103,17 +137,18 @@ internal static class Program
 
         await RunAsync(
                 "dotnet",
-                $"tool update dotnet-reportgenerator-globaltool --tool-path {toolsDir}"
+                $"tool update dotnet-reportgenerator-globaltool --tool-path {_ToolsDir}"
             )
             .ConfigureAwait(false);
         await RunAsync(
-                $"{toolsDir}/reportgenerator",
+                $"{_ToolsDir}/reportgenerator",
                 $"-reports:{coverageDir}/*.xml -targetdir:{reportDir}"
             )
             .ConfigureAwait(false);
     }
 
     /// <summary>Packs the solution for release.</summary>
+    /// <returns>A <see cref="Task"/> that represents the asynchronous operation.</returns>
     private static Task PackAsync()
     {
         string releaseDir = Path.Combine(_ArtifactDir, "releases");

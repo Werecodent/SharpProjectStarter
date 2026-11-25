@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="255.99998"
+   height="256"
+   viewBox="0 0 255.99998 256"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
+   sodipodi:docname="SharpProjectStarterLogo.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <title
+     id="title14">Sharp Project Starter Logo</title>
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="px"
+     inkscape:zoom="2"
+     inkscape:cx="120"
+     inkscape:cy="123.25"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-7"
+     inkscape:window-y="-7"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath11">
+      <rect
+         style="fill:#00ff00;stroke:#28220b;stroke-width:0;stroke-dasharray:none"
+         id="rect12"
+         width="256"
+         height="256"
+         x="0"
+         y="0"
+         inkscape:label="Clip"
+         transform="rotate(-45)" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath12">
+      <rect
+         style="fill:#00ff00;stroke:#28220b;stroke-width:0;stroke-dasharray:none"
+         id="rect13"
+         width="508.48795"
+         height="193.7097"
+         x="0"
+         y="0"
+         inkscape:label="Clip"
+         transform="rotate(-45)" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath13">
+      <rect
+         style="fill:#00ff00;stroke:#28220b;stroke-width:0;stroke-dasharray:none"
+         id="rect14"
+         width="331.46039"
+         height="216.09021"
+         x="0"
+         y="0"
+         inkscape:label="Clip"
+         transform="rotate(-45)" />
+    </clipPath>
+  </defs>
+  <g
+     inkscape:label="Tux"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#000000;stroke:#28220b;stroke-width:0;stroke-dasharray:none"
+       id="rect1"
+       width="256"
+       height="256"
+       x="0"
+       y="0"
+       inkscape:label="Jacket" />
+    <rect
+       style="fill:#ffffff;stroke:#28220b;stroke-width:0;stroke-dasharray:none"
+       id="rect2"
+       width="216.06712"
+       height="216.06712"
+       x="9.155386"
+       y="-225.2225"
+       transform="matrix(0.5461266,0.83770265,-0.5461266,0.83770265,0,0)"
+       inkscape:label="Shirt"
+       clip-path="url(#clipPath13)" />
+    <rect
+       style="fill:#ff0000;stroke:#28220b;stroke-width:0;stroke-dasharray:none"
+       id="rect3-8"
+       width="67.416618"
+       height="67.416618"
+       x="180.31268"
+       y="-179.24258"
+       transform="matrix(0.35599534,0.93448773,-0.35599534,0.93448773,0,0)"
+       inkscape:label="Tie"
+       clip-path="url(#clipPath12)" />
+    <rect
+       style="fill:#ff0000;stroke:#28220b;stroke-width:0;stroke-dasharray:none"
+       id="rect3"
+       width="90.509666"
+       height="90.509666"
+       x="22.627417"
+       y="-158.39192"
+       transform="rotate(45)"
+       inkscape:label="Knot"
+       clip-path="url(#clipPath11)" />
+    <path
+       d="m 193.67773,117.48703 h -1.95117 l -0.53906,2.20312 h 1.80469 v 0.79102 h -2.00977 l -0.60937,2.46679 h -0.75586 l 0.60937,-2.46679 h -1.58203 l -0.60937,2.46679 h -0.75586 l 0.60937,-2.46679 h -1.74609 v -0.79102 h 1.95117 l 0.53906,-2.20312 h -1.80469 v -0.79102 h 2.00977 l 0.61523,-2.47266 h 0.75586 l -0.61523,2.47266 h 1.58203 l 0.61524,-2.47266 h 0.75585 l -0.61523,2.47266 h 1.74609 z m -2.68945,-0.0117 h -1.60547 l -0.55078,2.22656 h 1.60547 z"
+       id="text3"
+       style="white-space:pre;fill:#ff0000;stroke:#28220b;stroke-width:0"
+       transform="matrix(6.37014,0,0,5.501679,-993.75428,-516.42023)"
+       aria-label="#"
+       inkscape:label="Pocket" />
+  </g>
+  <metadata
+     id="metadata14">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>Sharp Project Starter Logo</dc:title>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Werecodent LLC</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>Werecodent LLC</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>SharpProjectStarter</rdf:li>
+            <rdf:li>Logo</rdf:li>
+            <rdf:li>Icon</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:description>The logo for the Sharp Project Starter project (https://github.com/Werecodent/SharpProjectStarter).</dc:description>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by-nc-nd/4.0/" />
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:prohibits
+           rdf:resource="http://creativecommons.org/ns#CommercialUse" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

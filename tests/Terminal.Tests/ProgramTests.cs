@@ -1,7 +1,7 @@
 ﻿using CreateAndFake.Fluent;
 using Xunit;
 
-namespace Werecodent.UltimateProjectStarter.Terminal.Tests;
+namespace Werecodent.SharpProjectStarter.Terminal.Tests;
 
 public static class ProgramTests
 {
