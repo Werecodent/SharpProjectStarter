@@ -1,4 +1,4 @@
-﻿namespace Werecodent.UltimateProjectStarter.Library;
+﻿namespace Werecodent.SharpProjectStarter.Library;
 
 /// <summary>Verifies string contents.</summary>
 public static class TextChecker

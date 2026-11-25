@@ -6,7 +6,7 @@
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <AnalysisMode>All</AnalysisMode>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-    <RootNamespace>Werecodent.UltimateProjectStarter.$(MSBuildProjectName)</RootNamespace>
+    <RootNamespace>Werecodent.SharpProjectStarter.$(MSBuildProjectName)</RootNamespace>
     <MinVerTagPrefix>v</MinVerTagPrefix>
   </PropertyGroup>
 

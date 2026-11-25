@@ -4,7 +4,7 @@ Thank you for your interest in contributing.
 
 Please first discuss the change you wish to make via issue/request, email, or any other method with the owners of this repository before making changes. Failure to do so will likely lead to a declined pull request regardless of quality.
 
-Make sure to refer to and follow the [code of conduct](CODE_OF_CONDUCT.md). For environment setup, refer to the [support](SUPPORT.md) page.
+Make sure to refer to and follow the [code of conduct](./CODE_OF_CONDUCT.md). For environment setup, refer to the [support](./SUPPORT.md) page.
 
 ## Quality Requirements
 

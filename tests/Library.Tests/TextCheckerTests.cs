@@ -3,7 +3,7 @@ using CreateAndFake;
 using CreateAndFake.Fluent;
 using Xunit;
 
-namespace Werecodent.UltimateProjectStarter.Library.Tests;
+namespace Werecodent.SharpProjectStarter.Library.Tests;
 
 public static class TextCheckerTests
 {

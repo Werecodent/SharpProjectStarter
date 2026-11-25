@@ -7,7 +7,7 @@
     <AnalysisMode>All</AnalysisMode>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <IsPackable>false</IsPackable>
-    <RootNamespace>Werecodent.UltimateProjectStarter.$(MSBuildProjectName)</RootNamespace>
+    <RootNamespace>Werecodent.SharpProjectStarter.$(MSBuildProjectName)</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>  

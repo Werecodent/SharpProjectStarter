@@ -6,7 +6,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/artifacts/bin/Terminal/Debug/net10.0/Terminal.dll",
+            "program": "${workspaceFolder}/artifacts/bin/Terminal/Debug/net11.0/Terminal.dll",
             "args": [],
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
